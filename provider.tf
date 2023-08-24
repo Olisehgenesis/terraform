@@ -21,7 +21,7 @@ provider "azurerm" {
 
 provider "azuredevops" {
   org_service_url       = "https://dev.azure.com/NAFTechnologyServices"
-  personal_access_token = "XXX"
+  personal_access_token = "xx"
 
 }
 
@@ -60,6 +60,6 @@ terraform {
     subscription_id = "7b91df65-1f96-40d9-bcef-a3f85479ad2b"
     tenant_id       = "04986fa2-6d28-46f7-966a-b1ac32f74fa8"
     client_id = "72d81d7f-a1f9-4082-9866-5e47ef460908"
-    client_secret = "UM28Q~PUhg8aajmmv5QKeI-BECazSD-cYO2iNdkR"
+    client_secret = "xxkR"
   }
 }
