@@ -22,17 +22,6 @@ variable "specific_environment" {
   description = "Specific environment or subproject."
 }
 
-#variable "resource_type_abbreviation" {
-#  type        = string
-#  description = "Resource type abbreviation."
-#}
-
-#variable "location" {
-#  type        = string
-#  default     = "West US 3"
-#  description = "Azure region where resources will be deployed."
-#}
-
 variable "tag_owner" {
   type        = string
   default = "Jeff Farinich"
@@ -45,18 +34,6 @@ variable "tag_department" {
   description = "Department tag for resource tagging."
 }
 
-# Additional variables specific to certain resources may be defined here.
-#variable "pricing_tier" {
-#  type        = string
-#  default     = "S1"
-#  description = "Pricing tier for the App Service Plan."
-#}
-
-#variable "operating_system" {
-#  type        = string
-#  default     = "Windows"
-#  description = "Operating system for the App Service Plan (Windows/Linux)."
-#}
 
 variable "runtime_stack" {
   type        = string
@@ -69,4 +46,3 @@ variable "PAT_TOKEN" {
   default = "ka4mgn3yyaio3teghpngqlhcfnxupih5aiorgnd2f4dzbmcnramq"
   description = "pat token"
 }
-# Add any additional variables as needed for other resources.

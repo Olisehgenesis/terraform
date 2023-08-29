@@ -1,6 +1,6 @@
 locals {
-  resource_type_abbreviation_local_storage = "SA"  # Renamed local variable for storage_account.tf
-  location_local_storage                   = "West US 3"  # Renamed local variable for storage_account.tf
+  resource_type_abbreviation_local_storage = "SA"
+  location_local_storage                   = "West US 3"  
 }
 
 resource "azurerm_storage_account" "storage_account" {
