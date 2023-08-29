@@ -1,9 +1,16 @@
+data "azurerm_resource_group" "CORP-LE-NafNet-RG" {
+  name = "CORP-LE-NafNet-RG"
+}
 
-# Configure the Azure provider
+data "azuredevops_project" "cloud%architecture%templates" {
+  name = "cloud%architecture%templates"
+}
 
 
-
-# Include other configuration files for resources
+data "azuredevops_git_repository" "modules" {
+  project_id = data.azuredevops_project.project.id
+  name       = "modules"
+}
 
 module "log_analytics" {
   source = "git::https://$(PAT_TOKEN)@dev.azure.com/NAFTechnologyServices/Cloud%20Architecture%20Templates/modules/_git/modules?ref=naftest&path=log_analytics"
@@ -37,7 +44,4 @@ module "key_vault" {
 module "storage_account" {
   source = "git::https://$(PAT_TOKEN)@dev.azure.com/NAFTechnologyServices/Cloud%20Architecture%20Templates/modules/_git/modules?ref=naftest&path=storage_account"
 }
-
-# Add any additional configuration or considerations here
-# if they are not covered by separate modules.
 
