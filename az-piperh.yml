@@ -1,5 +1,6 @@
 # Azure Pipeline that runs basic continuous integration on a Terraform project
 
+# Trigger on specific branches and paths
 trigger:
   branches:
     include:
@@ -8,17 +9,23 @@ trigger:
     include:
       - /naftest
 
+# Define repositories
 resources:
   repositories:
     - repository: modules
       type: git
       name: "modules"
 
+# Define variables used in the pipeline
 variables:
+  subscription_id: '7b91df65-1f96-40d9-bcef-a3f85479ad2b'
+  tenant_id: '04986fa2-6d28-46f7-966a-b1ac32f74fa8'
+  org_service_url: 'https://dev.azure.com/NAFTechnologyServices'
   azureLocation: 'us-west-3'
   terraformWorkingDirectory: '$(System.DefaultWorkingDirectory)'
   terraformVersion: $(latest)
 
+# Define pipeline stages
 stages:
   - stage: TerraformContinuousIntegration
     displayName: Terraform Module - CI
@@ -46,8 +53,8 @@ stages:
               terraformVersion: $(latest)
               backendConfig: '-backend-config="access_key=$(SecretKey)"'
             env:
-              ARM_SUBSCRIPTION_ID: $(subscriptionId)
-              ARM_TENANT_ID: $(tenantId)
+              ARM_SUBSCRIPTION_ID: $(subscription_id)
+              ARM_TENANT_ID: $(tenant_id)
 
           # Run Terraform validate
           - task: TerraformCLI@0
@@ -83,7 +90,3 @@ stages:
         env:
           PAT_TOKEN: $(PatToken)
           SecretKey: $(KeyVaultSecret)
-
-resources:
-  variables:
-    SecretKey: $(KeyVaultSecret)
