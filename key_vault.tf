@@ -14,30 +14,31 @@ resource "azurerm_key_vault" "key_vault" {
     Owner     = var.tag_owner
     Department = var.tag_department
   }
+}
 
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.object_id
+resource "azurerm_key_vault_access_policy" "key_vault_access_policy" {
+  key_vault_id = azurerm_key_vault.key_vault.id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = data.azurerm_client_config.current.object_id
 
-    secret_permissions = [
-      "Get",
-      "List",
-      "Set",
-    ]
+  secret_permissions = [
+    "Get",
+    "List",
+    "Set",
+  ]
 
-    key_permissions = [
-      "Get",
-      "List",
-      "Create",
-      "Update",
-      "Import",
-      "Delete",
-      "Recover",
-      "Backup",
-      "Restore",
-      "UnwrapKey",
-    ]
-  }
+  key_permissions = [
+    "Get",
+    "List",
+    "Create",
+    "Update",
+    "Import",
+    "Delete",
+    "Recover",
+    "Backup",
+    "Restore",
+    "UnwrapKey",
+  ]
 }
 
 data "azurerm_client_config" "current" {}
